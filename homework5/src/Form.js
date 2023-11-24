@@ -5,24 +5,36 @@ const validate = (values) => {
     const errors = {};
     if (values.firstName.length < 4) {
         errors.firstName = "Name is Requiers at list 4 characters";
-    }
+    };
+
     if (values.lastName.length < 4) {
         errors.lastname = "Last Name is Requiers at list 4 characters";
-    }
+    };
+
     if (!values.email) {
         errors.email = "Email is requierd!";
-    } else if (!values.email.includes("@")) {
+    };
+
+    if (!values.email.includes("@")) {
         errors.email = "This Email is not valid";
-    }
+    };
+
     if (values.age < 18) {
         errors.age = "User has to be over 18";
-    }
-    if (!values.sex || (values.sex !== 'Male' || 'Female')) {
-        errors.sex = 'Must provide gender'
+    };
+
+    if (!values.sex) {
+        errors.sex = 'Must provide gender';
+    };
+
+    if (values.sex !== 'Male' || values.sex !== 'Female') {
+        errors.sex = 'Invalid gender type';
     };
 
     return errors;
+    
 };
+
 
 
 function Form() {

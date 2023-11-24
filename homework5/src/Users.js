@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import useAxios from "./useAxios";
 
 const Users = () => {
-    
+
     const { data: users, loading, error, handleRemove } = useAxios('users');
 
     if (loading) {

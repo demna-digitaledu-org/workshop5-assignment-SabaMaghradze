@@ -30,6 +30,8 @@ const useAxios = (dynamic) => {
         } catch (error) {
             console.error('Error deleting user:', error);
         }
+
+        // internal server errors migdebs delete requestze.
     };
 
     useEffect(() => {
