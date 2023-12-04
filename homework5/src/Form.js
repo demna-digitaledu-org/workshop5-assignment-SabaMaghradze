@@ -1,6 +1,9 @@
 import { useState } from "react";
 import axios from 'axios';
 
+
+let base = 'http://localhost:3001/';
+
 const validate = (values) => {
     const errors = {};
     if (values.firstName.length < 4) {
@@ -32,10 +35,8 @@ const validate = (values) => {
     };
 
     return errors;
-    
+
 };
-
-
 
 function Form() {
 
@@ -50,12 +51,11 @@ function Form() {
     function handleChange(e) {
         const { name, value } = e.target;
         setUser({ ...user, [name]: value });
-        console.log(validate(user));
     };
 
     async function handleSubmit(e) {
-        e.preventDefault();
-        const res = await axios.post('http://localhost:3001/users', user);
+        console.log(validate(user));
+        const res = await axios.post(`${base}users`, user);
     };
 
     return (

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const base = 'http://localhost:3001/';
+export const base = 'http://localhost:3001/';
 
 const useAxios = (dynamic) => {
 
@@ -21,26 +21,11 @@ const useAxios = (dynamic) => {
         }
     };
 
-    const handleRemove = async (id) => {
-        try {
-            await axios.delete(`${base}${dynamic}/${id}`);
-            setData(data.filter(item => {
-                return item._id !== id;
-            }));
-        } catch (error) {
-            console.error('Error deleting user:', error);
-        }
-
-        // internal server errors migdebs delete requestze.
-    };
-
     useEffect(() => {
         fetchData();
     }, []);
 
-    return { data, loading, error, handleRemove };
+    return { data, setData, loading, error };
 };
-
-
 
 export default useAxios;
