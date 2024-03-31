@@ -7,15 +7,15 @@ let base = 'http://localhost:3001/';
 const validate = (values) => {
     const errors = {};
     if (values.firstName.length < 4) {
-        errors.firstName = "Name is Requiers at list 4 characters";
+        errors.firstName = "Name requires at list 4 characters";
     };
 
     if (values.lastName.length < 4) {
-        errors.lastname = "Last Name is Requiers at list 4 characters";
+        errors.lastname = "Last Name is requires at list 4 characters";
     };
 
     if (!values.email) {
-        errors.email = "Email is requierd!";
+        errors.email = "Email is required!";
     };
 
     if (!values.email.includes("@")) {
@@ -54,6 +54,7 @@ function Form() {
     };
 
     async function handleSubmit(e) {
+        e.preventDefault();
         console.log(validate(user));
         const res = await axios.post(`${base}users`, user);
     };
